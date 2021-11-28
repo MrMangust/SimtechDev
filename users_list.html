@@ -16,18 +16,19 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav navbar-right">
             <li class="nav-item active">
-                <a class="nav-link" data-toggle="modal" data-target="#reg" href="#">Авторизация <span class="sr-only"></span></a>
+                <a class="nav-link" data-toggle="modal" data-target="#reg" href="#">Simtech <span class="sr-only"></span></a>
             </li>
         </ul>
     </div>
 </nav>
 
 
+<!-- Modal-Form-Registration -->
 <div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="Register">Авторизация</h5>
+                <h5 class="modal-title" id="Register">Регистрация</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -36,11 +37,14 @@
                 <div class="container">
                     <form  role="form" action="index.php" method="post">
                         <div class="form-group">
+                            <input class="form-control" type="text" id="fname" name="fname" placeholder="Имя">
+                            <br>
+                            <input class="form-control" type="text" id="lname" name="lname" placeholder="Фамилия">
+                            <br>
                             <input class="form-control" type="email" id="email" name="email" placeholder="E-mail">
                             <br>
-                            <input type="password" class="form-control" placeholder="Password">
-                            <br>
-                            <button type="submit" class="btn btn-secondary">Авторизироваться</button>
+                            <input type="password">
+                            <button type="submit" class="btn btn-secondary">Зарегистрировться</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
                         </div>
                     </form>

@@ -22,8 +22,6 @@
         </div>
     </nav>
 
-
-    <!-- Modal-Form-Registration -->
     <div class="modal fade" id="reg" tabindex="-1" role="dialog" aria-labelledby="Register" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -37,15 +35,28 @@
                     <div class="container">
                         <form  role="form" action="index.php" method="post">
                             <div class="form-group">
-                                <input class="form-control" type="text" id="fname" name="fname" placeholder="Имя">
+                                <input class="form-control" type="text" id="fname" name="fname" placeholder="Имя" required>
                                 <br>
-                                <input class="form-control" type="text" id="lname" name="lname" placeholder="Фамилия">
+                                <input class="form-control" type="text" id="lname" name="lname" placeholder="Фамилия" required>
                                 <br>
+
+                                <div class="form-group row">
+                                    <label  class="col-sm-3 col-form-label">Ваш пол:</label>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="radiom" value="m" checked="checked">
+                                        <label class="form-check-label" for="radiom">Мужской</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="gender" id="radiof" value="f">
+                                        <label class="form-check-label" for="radiof">Женский</label>
+                                    </div>
+                                </div>
                                 <input class="form-control" type="email" id="email" name="email" placeholder="E-mail">
                                 <br>
-                                <input type="password">
+                                <input  class="form-control"  name="password" type="password" placeholder="Password" required>
+                                <br>
                                 <button type="submit" class="btn btn-secondary">Зарегистрироваться</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                                <input type="reset" class="btn btn-secondary">
                             </div>
                         </form>
                     </div>

@@ -1,25 +1,53 @@
 <?php
-require_once("index.html");
-
-
+require "connect.php";
+$mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : false;
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
-$servername= 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_name = 'simtechdev';
 
-$mysqli = mysqli_connect($servername, $db_user, $db_password,$db_name);
-if (!$mysqli){
-    die("Connection failed: " . mysqli_connect_error());
+
+    if($mode === 'users') {
+        $email = trim($_REQUEST['email']);
+        $user = $mysqli->query("SELECT email, password FROM users where email = '$email' limit 1");
+        $user = mysqli_fetch_array($user, MYSQLI_ASSOC);
+
+
+        if ($user) {
+            if (password_verify(trim($_REQUEST['password']), $user['password'])) {
+                $customers = $mysqli->query("SELECT * FROM users");
+                while ($result = mysqli_fetch_array($customers, MYSQLI_ASSOC)){
+                    $users[] = $result;
+                }
+                require 'users_list.html';
+            } else {
+                require 'auth.html';
+            }
+        }
+
+        exit();
     }
 
-    $first_name = trim($_SERVER['first_name']);
-    $last_name = trim($_SERVER['last_name']);
-    $gender = trim($_SERVER['gender']);
-    $email = trim($_SERVER['email']);
-    $pass = password_hash(trim($_SERVER['password']), PASSWORD_BCRYPT);
-
-
+//Registration
+    $first_name = trim($_REQUEST['first_name']);
+    $last_name = trim($_REQUEST['last_name']);
+    $gender = trim($_REQUEST['gender']);
+    $email = trim($_REQUEST['email']);
+    $pass = password_hash(trim($_REQUEST['password']), PASSWORD_BCRYPT);
     $mysqli->query("INSERT INTO users (first_name, last_name, gender, email, password) VALUES ('$first_name','$last_name','$gender','$email','$pass')");
 
 }
+//Вывод пользвателей
+/*$customers = $mysqli->query("SELECT * FROM users");
+while ($result = mysqli_fetch_array($customers, MYSQLI_ASSOC)){
+    $users[] = $result;
+}*/
+
+//Авторизация
+if ($mode === 'auth'){
+    require 'auth.html';
+}else{
+    require 'index.html';
+}
+
+
+/*require 'index.html';*/
+/*require 'users_list.html';*/
+exit();

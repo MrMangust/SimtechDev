@@ -1,9 +1,10 @@
 <?php
 require "connect.php";
 $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : false;
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-
+//Авторизация
     if($mode === 'users') {
         $email = trim($_REQUEST['email']);
         $user = $mysqli->query("SELECT email, password FROM users where email = '$email' limit 1");
@@ -15,7 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $customers = $mysqli->query("SELECT * FROM users");
                 while ($result = mysqli_fetch_array($customers, MYSQLI_ASSOC)){
                     $users[] = $result;
+
                 }
+
+                $feed = $mysqli->query("SELECT * FROM feedback");
+                while ($result = mysqli_fetch_array($feed, MYSQLI_ASSOC)){
+                    $feeds[] = $result;
+                }
+
                 require 'users_list.html';
             } else {
                 require 'auth.html';
@@ -40,7 +48,7 @@ while ($result = mysqli_fetch_array($customers, MYSQLI_ASSOC)){
     $users[] = $result;
 }*/
 
-//Авторизация
+
 if ($mode === 'auth'){
     require 'auth.html';
 }else{

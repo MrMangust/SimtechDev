@@ -7,7 +7,24 @@
     <title>SimtechDev</title>
 </head>
 <body>
-<br>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav navbar-right">
+            <li class="nav-item active">
+                <a class="nav-link" href="feedback.php">Обратная связь<span class="sr-only"></span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="index.php">Выход<span class="sr-only"></span></a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
 
 <!--table-->
 <div class="container">
@@ -34,6 +51,45 @@
                 <td><?php echo $user['email']; ?></td>
                 <td><?php echo $user['gender']; ?></td>
                 <td><?php echo $user['password']; ?></td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<hr>
+<!--feedbacks-->
+<div class="container">
+    <div class="row">
+        <h5 class="text-center">Список запросов</h5>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">feed_id</th>
+                <th scope="col">name</th>
+                <th scope="col">subject</th>
+                <th scope="col">email</th>
+                <th scope="col">phone</th>
+                <th scope="col">radio</th>
+                <th scope="col">textarea</th>
+                <th scope="col">asap</th>
+                <th scope="col">checkbox</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            <?php foreach($feeds as $feed) :?>
+            <tr>
+                <th scope="row"><?php echo $feed['feed_id']; ?></th>
+                <td><?php echo $feed['name']; ?></td>
+                <td><?php echo $feed['subject']; ?></td>
+                <td><?php echo $feed['email']; ?></td>
+                <td><?php echo $feed['phone']; ?></td>
+                <td><?php echo $feed['radio']; ?></td>
+                <td><?php echo $feed['textarea']; ?></td>
+                <td><?php echo $feed['asap']; ?></td>
+                <td><?php echo $feed['checkbox']; ?></td>
             </tr>
             <?php endforeach; ?>
             </tbody>

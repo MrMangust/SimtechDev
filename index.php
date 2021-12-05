@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 require 'users_list.html';
             } else {
-                require 'auth.html';
+                require 'index.html';
             }
         }
 

@@ -4,6 +4,7 @@ $mode = isset($_REQUEST['mode']) ? $_REQUEST['mode'] : false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
+
 //Авторизация
     if($mode === 'users') {
         $email = trim($_REQUEST['email']);

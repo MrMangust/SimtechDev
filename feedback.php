@@ -14,10 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $checkbox = trim($_REQUEST['checkbox']);
 
     $mysqli->query("INSERT INTO feedback (user_name, subject, email, phone, radio, textarea, asap, checkbox) VALUES ('$user_name', '$subject','$email', '$phone','$radio','$textarea','$asap','checkbox')");
-    mail("ninan2290@gmail.com",$subject, $textarea, );
-    echo '<pre>';
-    print_r($_POST);
-    echo '</pre>';
+    mail("testmailtestmailg@gmail.com",$subject, $textarea,);
+
 }
 
 require 'feedback.html';

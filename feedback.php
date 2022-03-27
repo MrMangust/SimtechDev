@@ -1,7 +1,7 @@
 <?php
 require 'connect.php';
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST'){
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     $user_name = trim($_REQUEST['name']);
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
     $checkbox = trim($_REQUEST['checkbox']);
 
     $mysqli->query("INSERT INTO feedback (user_name, subject, email, phone, radio, textarea, asap, checkbox) VALUES ('$user_name', '$subject','$email', '$phone','$radio','$textarea','$asap','checkbox')");
-    mail("testmailtestmailg@gmail.com",$subject, $textarea,);
+    mail("testmailtestmailg@gmail.com", $subject, $textarea, $email);
 
 }
 

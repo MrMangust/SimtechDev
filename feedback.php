@@ -3,6 +3,21 @@ require 'connect.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $image = $_FILES['image'];
+    $types = ["image/jpeg", "image/png"];
+
+    if (!in_array($image["type"], $types)) {
+        die("Неверный типа файла.");
+    }
+
+    if (!is_dir('uploads')) {
+        mkdir('uploads', 0777, true);
+    }
+    $extension = pathinfo($image["name"], PATHINFO_EXTENSION);
+    $fileName = time() . ".$extension";
+    move_uploaded_file($image["tmp_name"], "uploads/" . $fileName);
+    $pathfile = 'uploads/'. $fileName;
+
 
     $user_name = trim($_REQUEST['name']);
     $subject = trim($_REQUEST['subject']);
@@ -13,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $asap = trim($_REQUEST['select']);
     $checkbox = trim($_REQUEST['checkbox']);
 
-    $mysqli->query("INSERT INTO feedback (user_name, subject, email, phone, radio, textarea, asap, checkbox) VALUES ('$user_name', '$subject','$email', '$phone','$radio','$textarea','$asap','checkbox')");
-    mail("testmailtestmailg@gmail.com", $subject, $textarea, $email);
+    $mysqli->query("INSERT INTO feedback (user_name, subject, email, phone, radio, textarea, asap, checkbox, filepath) VALUES ('$user_name', '$subject','$email', '$phone','$radio','$textarea','$asap','$checkbox', '$pathfile')");
+    mail("ninan2290@gmail.com", $subject, $textarea, $email);
 
 }
 

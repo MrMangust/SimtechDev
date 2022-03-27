@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 02 2021 г., 17:02
--- Версия сервера: 10.4.12-MariaDB
--- Версия PHP: 7.3.26
+-- Время создания: Мар 27 2022 г., 19:27
+-- Версия сервера: 5.7.33
+-- Версия PHP: 7.1.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,17 +36,24 @@ CREATE TABLE `feedback` (
   `radio` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
   `textarea` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `asap` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `checkbox` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL
+  `checkbox` varchar(256) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `filepath` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп данных таблицы `feedback`
 --
 
-INSERT INTO `feedback` (`feed_id`, `user_name`, `subject`, `email`, `phone`, `radio`, `textarea`, `asap`, `checkbox`) VALUES
-(1, 'test', 'test', 'test@gmail.com', 'test', 'email', 'ttttt', 'srochno', 'checkbox'),
-(2, 'name', 'subject', 'email@mail.ru', 'phone', 'phone', 'textarea', 'nescrochno', 'checkbox'),
-(3, 'name1', 'subject1', 'email1@mail.ru', '88005553535', 'email', 'textarea1', 'nescrochno', 'checkbox');
+INSERT INTO `feedback` (`feed_id`, `user_name`, `subject`, `email`, `phone`, `radio`, `textarea`, `asap`, `checkbox`, `filepath`) VALUES
+(1, 'test', 'test', 'test@gmail.com', 'test', 'email', 'ttttt', 'srochno', 'checkbox', ''),
+(2, 'name', 'subject', 'email@mail.ru', 'phone', 'phone', 'textarea', 'nescrochno', 'checkbox', ''),
+(3, 'name1', 'subject1', 'email1@mail.ru', '88005553535', 'email', 'textarea1', 'nescrochno', 'checkbox', ''),
+(4, 'dfsdf', 'sdfsdf', 'sdfsdf@fgdfgdfjgkgkg.com', 'sdfdf', 'phone', 'sdfsdf', 'nescrochno', 'checkbox', ''),
+(5, 'fsdf', 'sdfsdf', 'dfsfd@gmail.com', '688454654654', 'email', 'dfsdfsdfsdf', 'srochno', 'checkbox', ''),
+(6, 'fsdf', 'sdfsdf', 'dfsfd@gmail.com', '688454654654', 'email', 'dfsdfsdfsdf', 'srochno', 'checkbox', ''),
+(7, 'Test', 'test', 'test@test.test', '88005553535', 'phone', 'test', 'nescrochno', 'checkbox', ''),
+(8, 'Станислав', 'Асафьев', 'test@gmail.com', '84894698', 'email', 'Картавые истории', 'srochno', 'yes', ''),
+(9, 'Stepan', 'Stepan', 'Stepan@Stepan.com', '78465465465', 'phone', 'StepanStepanStepanStepanStepan', 'srochno', 'yes', 'uploads/1648396878.jpg');
 
 -- --------------------------------------------------------
 
@@ -100,7 +107,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT для таблицы `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `feed_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблицы `users`
